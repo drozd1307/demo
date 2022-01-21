@@ -67,13 +67,11 @@ def del_doc(docs, dir):
     doc_num = input('Введите номер документа: ')
     rec = 0
     for record in docs:
-        for k, val in record.items():
-            if doc_num in val:
-                record.pop([rec])
-                print(rec)
-                print()
-        rec += 1
-    return
+        if doc_num in record.values():
+            docs.pop(rec)
+            print(docs)
+        rec +=1
+
 
 
 com = input('Введите команду: ').lower()
