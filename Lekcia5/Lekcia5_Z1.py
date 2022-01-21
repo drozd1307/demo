@@ -49,33 +49,31 @@ def all_rec(all_doc):
     return
 
 
-def add_record(docs, dir):
+def add_record(docs, dirs):
     doc_type = input('Введите тип документа: ')
     doc_num = input('Введите номер документа: ')
     name_doc = input('Введите имя владельца: ')
     num_dir = input('Введите номер полки: ')
     docs.append({"type": doc_type, "number": doc_num, "name": name_doc})
-    for k in dir.keys():
+    for k in dirs.keys():
         if num_dir == k:
-            dir[num_dir].append(doc_num)
+            dirs[num_dir].append(doc_num)
             print(f'Документ {doc_type} {doc_num} {name_doc}, успешно добавлен на полку {num_dir}')
     else:
         print('Такой полки не сущестует')
 
 
-def del_doc(docs, dir):
+def del_doc(docs, dirs):
     doc_num = input('Введите номер документа: ')
     rec = 0
     for record in docs:
         if doc_num in record.values():
             docs.pop(rec)
-            print(docs)
             print('Документ успешно удален')
             return
-        rec +=1
+        rec += 1
     else:
         print('Такого документа не существует')
-
 
 
 com = input('Введите команду: ').lower()
