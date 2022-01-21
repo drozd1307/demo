@@ -30,7 +30,7 @@ def find_item(docs):
             print(f'Документ принадлежит: {record["name"]}')
             return
     else:
-        return print('Указанного документа не существует.')
+        print('Указанного документа не существует.')
 
 
 def find_dir(dirs):
@@ -40,7 +40,7 @@ def find_dir(dirs):
             print(f'Документ с номером {num}, находится на полке {k}')
             return
     else:
-        return print('Указанного документа не существует.')
+        print('Указанного документа не существует.')
 
 
 def all_rec(all_doc):
@@ -58,9 +58,9 @@ def add_record(docs, dir):
     for k in dir.keys():
         if num_dir == k:
             dir[num_dir].append(doc_num)
-            return print(f'Документ {doc_type} {doc_num} {name_doc}, успешно добавлен на полку {num_dir}')
+            print(f'Документ {doc_type} {doc_num} {name_doc}, успешно добавлен на полку {num_dir}')
     else:
-        return print('Такой полки не сущестует')
+        print('Такой полки не сущестует')
 
 
 def del_doc(docs, dir):
@@ -70,7 +70,11 @@ def del_doc(docs, dir):
         if doc_num in record.values():
             docs.pop(rec)
             print(docs)
+            print('Документ успешно удален')
+            return
         rec +=1
+    else:
+        print('Такого документа не существует')
 
 
 
@@ -84,6 +88,6 @@ elif com == 'l':
 elif com == 'a':
     add_record(documents, directories)
 elif com == 'd':
-    print(del_doc(documents, directories))
+    del_doc(documents, directories)
 else:
     print('Такой команда не существует')
