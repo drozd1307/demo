@@ -59,6 +59,7 @@ def add_record(docs, dirs):
         if num_dir == k:
             dirs[num_dir].append(doc_num)
             print(f'Документ {doc_type} {doc_num} {name_doc}, успешно добавлен на полку {num_dir}')
+            return
     else:
         print('Такой полки не сущестует')
 
@@ -105,21 +106,24 @@ def add_shelf(dirs):
         dirs[tag_dir] = []
         print('Полка успешно добалена.')
 
+def menu ():
+    com = input('Введите команду: ').lower()
+    if com == 'p':
+        find_item(documents)
+    elif com == 's':
+        find_dir(directories)
+    elif com == 'l':
+        all_rec(documents)
+    elif com == 'a':
+        add_record(documents, directories)
+    elif com == 'd':
+        del_doc(documents, directories)
+    elif com == 'm':
+        move_dir(directories)
+    elif com == 'as':
+        add_shelf(directories)
+    else:
+        print('Такой команда не существует')
 
-com = input('Введите команду: ').lower()
-if com == 'p':
-    find_item(documents)
-elif com == 's':
-    find_dir(directories)
-elif com == 'l':
-    all_rec(documents)
-elif com == 'a':
-    add_record(documents, directories)
-elif com == 'd':
-    del_doc(documents, directories)
-elif com == 'm':
-    move_dir(directories)
-elif com == 'as':
-    add_shelf(directories)
-else:
-    print('Такой команда не существует')
+
+menu()
