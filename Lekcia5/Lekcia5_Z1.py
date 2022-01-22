@@ -97,6 +97,15 @@ def move_dir(dirs):
         print('Такого документа не существует.')
 
 
+def add_shelf(dirs):
+    tag_dir = input('Введите номер, новой полки: ')
+    if tag_dir in dirs.keys():
+        print('Такая полка уже есть.')
+    else:
+        dirs[tag_dir] = []
+        print('Полка успешно добалена.')
+
+
 com = input('Введите команду: ').lower()
 if com == 'p':
     find_item(documents)
@@ -110,5 +119,7 @@ elif com == 'd':
     del_doc(documents, directories)
 elif com == 'm':
     move_dir(directories)
+elif com == 'as':
+    add_shelf(directories)
 else:
     print('Такой команда не существует')
