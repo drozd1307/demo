@@ -63,17 +63,24 @@ def add_record(docs, dirs):
         print('Такой полки не сущестует')
 
 
-def del_doc(docs, dirs):
+def del_doc(docs, dris):
     doc_num = input('Введите номер документа: ')
+    def del_dirs(dirs):
+        for k, val in dirs.items():
+            if doc_num in val:
+                val.remove(doc_num)
     rec = 0
     for record in docs:
         if doc_num in record.values():
             docs.pop(rec)
             print('Документ успешно удален')
+            del_dirs(dris)
             return
         rec += 1
     else:
         print('Такого документа не существует')
+
+
 
 
 com = input('Введите команду: ').lower()
