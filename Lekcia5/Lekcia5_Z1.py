@@ -81,6 +81,20 @@ def del_doc(docs, dris):
         print('Такого документа не существует')
 
 
+def move_dir(dirs):
+    doc_num = input('Введите номер документа: ')
+    for k, val in dirs.items():
+        if doc_num in val:
+            tag_dir = input('На какую полку поместить: ')
+            val.remove(doc_num)
+            if tag_dir in dirs.keys():
+                dirs[tag_dir].append(doc_num)
+            else:
+                print('Такой полки не существует.')
+            print('Документ успешно перемещен.')
+            return
+    else:
+        print('Такого документа не существует.')
 
 
 com = input('Введите команду: ').lower()
@@ -94,5 +108,7 @@ elif com == 'a':
     add_record(documents, directories)
 elif com == 'd':
     del_doc(documents, directories)
+elif com == 'm':
+    move_dir(directories)
 else:
     print('Такой команда не существует')
