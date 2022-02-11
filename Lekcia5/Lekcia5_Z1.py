@@ -106,10 +106,10 @@ def add_shelf(dirs):
         dirs[tag_dir] = []
         print('Полка успешно добалена.')
 
-def menu ():
+def menu():
     while True:
         com = input('Введите команду: ').lower()
-        if com == 'p':
+        if com in ('p', 'people'):
             find_item(documents)
         elif com == 's':
             find_dir(directories)
